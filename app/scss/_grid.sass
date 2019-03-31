@@ -1,0 +1,53 @@
+$v-step: 10
+$gutter: 20px
+$main-color: #750411
+$max-width: 960px
+.row
+  margin:
+    left: -15px
+    right: -15px
+  display: flex
+  flex-wrap: wrap
+.column
+  padding:
+    left: 15px
+    right: 15px
+  width: 100%
+.wrapper
+  @extend .column
+  max-width: 960px
+  margin: 0 auto
+
+.justify-between
+  justify-content: space-between
+  display: flex
+  flex-wrap: wrap
+  background: $main-color
+@for $i from 1 through 5
+  .m-b-#{$i*$v-step}
+    margin-bottom: $i*$v-step*1px
+$dims: phablet tablet laptop desktop exlarge
+.column-
+  @each $dim in $dims
+    &#{$dim}-
+      +breakpoint($dim)
+        @for $i from 1 through 4
+          @for $j from 2 through 4
+            $rest: $j%$i
+            @if $j%2 ==0 and $i%2 == 0
+            @else
+              @if percentage($i/$j) < 100% and $rest != 0 or $i == 1
+                &#{$i}-#{$j}
+                  width: 100%
+                  padding:
+                    left: 15px
+                    right: 15px
+                  max-width: percentage($i/$j)
+.col-
+  @each $dim in $dims
+    &#{$dim}-
+      +breakpoint($dim)
+        @for $i from 1 through 12
+          &#{$i}
+            max-width: percentage($i/12)
+

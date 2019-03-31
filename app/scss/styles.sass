@@ -1,0 +1,65 @@
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+img
+  max-width: 100%
+// @import 'mixin';
+=propToRem($prop, $px)
+  #{$prop}: $px*1px
+  #{$prop}: $px/16*1rem
+=breakpoint($point)
+  @if $point == exlarge
+    @media (min-width: 80rem)
+      @content
+  @if $point == desktop
+    @media (min-width: 70rem)
+      @content
+  @else if $point == laptop
+    @media (min-width: 64rem)
+      @content 
+  @else if $point == tablet 
+    @media (min-width: 50rem)
+      @content
+  @else if $point == phablet
+    @media (min-width: 37.5rem)
+      @content
+@import 'grid';
+.placeholder
+  background: red
+  height: 200px
+.small-placeholder
+  @extend .placeholder 
+  height: 60px
+  display: flex
+  flex-direction: row
+  & > ul
+    list-style: none
+    display: flex
+  & > li
+    margin: 0 auto
+    display: list-item
+    text-align: -webkit-match-parent
+  & > ul > li
+    display: flex
+    border: 1px solid #c6c6c6
+    +propToRem(font-size, 18)
+    background-color: #e5e5e5
+    justify-content: center
+    text-align: center
+  & > ul > li > a
+    -webkit-any-link
+    text-decoration: none
+    color: #6e6e6e
+    text-transform: uppercase
+    padding: 5px
+    line-height: 2
+  & > ul > li > a:hover
+    color: #740411
+  & > ul > li:hover
+    background-color: #f1f1f1
+  
+// .icon
+//   background-image: url(../img/spritesheet.png)
+//   background-repeat: no-repeat
+//   display: block

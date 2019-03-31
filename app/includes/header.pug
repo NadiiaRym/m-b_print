@@ -1,0 +1,25 @@
+.header.m-b-30
+  .wrapper
+    .justify-between
+      .small-placeholder.m-b-20(style="width: 200px")
+        .logo
+      .small-placeholder.m-b-20(style="width: 200px")
+    .menu
+      .small-placeholder
+        -
+          var menu =[
+            'Главная',
+            'каталог',
+            'Услуги',
+            'Производство',
+            'Новости',
+            'Поддержка',
+            'Технологии',
+            'Контакты',
+            'MENU'
+          ];
+        ul
+          each item in menu
+            -;
+            li
+              a(href="#")=item
