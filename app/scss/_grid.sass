@@ -1,7 +1,7 @@
 $v-step: 10
 $gutter: 20px
 $main-color: #750411
-$max-width: 960px
+$max-width: 1550px
 .row
   margin:
     left: -15px
@@ -15,14 +15,27 @@ $max-width: 960px
   width: 100%
 .wrapper
   @extend .column
-  max-width: 960px
+  max-width: $max-width
   margin: 0 auto
 
 .justify-between
   justify-content: space-between
   display: flex
   flex-wrap: wrap
-  background: $main-color
+  // background: $main-color
+.logo
+  background-image: url('../img/logo.png')
+  display: flex
+  img
+    max-width: 100%
+    height: auto
+  .tel
+    .fa-phone:before
+    color: #fff
+    height: 30px
+    width: 30px
+    font-weight: bold
+    font-size: 30px
 @for $i from 1 through 5
   .m-b-#{$i*$v-step}
     margin-bottom: $i*$v-step*1px
